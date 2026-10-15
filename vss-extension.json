@@ -1,47 +1,50 @@
 {
   "manifestVersion": 1,
-  "id": "variablehydration",
-  "name": "Variable Tools for Azure DevOps Services",
-  "version": "#{GitVersion.Major}#.#{GitVersion.Minor}#.#{GitVersion.Patch}#",
-  "public": true,
-  "publisher": "nkdAgility",
+  "id": "cogenius-variable-tools",
+  "name": "Cogenius Variable tools for Azure DevOps",
+  "version": "1.0.0",
+  "public": false,
+  "publisher": "Cogenius",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services.Cloud"
     },
     {
       "id": "Microsoft.TeamFoundation.Server",
-      "version":  "[15.0,)"
+      "version": "[19.0,)"
     }
   ],
-  "description": "Includes Build tasks to save (or dehydrate) you Azure Pipeline Build variables and Azure Pipeline Release tasks to help you load (or rehydrate) then in your Azure Pipeline Release process.",
+  "description": "Save pipeline variables (e.g. GitVersion and Build variables) to JSON in one pipeline/stage and load them again in another. Runs on Windows, Linux and macOS agents.",
   "categories": [
-    "Build and release"
+    "Azure Pipelines"
   ],
   "tags": [
     "release",
     "build",
-    "variable"
+    "variable",
+    "variables",
+    "gitversion",
+    "linux",
+    "cross-platform"
   ],
   "links": {
+    "home": {
+      "uri": "https://github.com/Cogenius/azure-devops-variable-tools"
+    },
     "learn": {
-      "uri": "https://dev.azure.com/nkdagility/Azure-DevOps-Variable-Tools/_wiki/wikis/variable-tools"
+      "uri": "https://github.com/Cogenius/azure-devops-variable-tools#readme"
     },
     "support": {
-      "uri": "https://github.com/nkdAgility/azure-devops-variable-tools/issues"
+      "uri": "https://github.com/Cogenius/azure-devops-variable-tools/issues"
+    },
+    "license": {
+      "uri": "https://github.com/Cogenius/azure-devops-variable-tools/blob/master/LICENSE.txt"
     }
   },
   "repository": {
     "type": "git",
-    "uri": "https://github.com/nkdAgility/azure-devops-variable-tools"
+    "uri": "https://github.com/Cogenius/azure-devops-variable-tools"
   },
-  "badges": [
-    {
-      "href": "https://dev.azure.com/nkdagility/Azure-DevOps-Variable-Tools/_build?definitionId=99",
-      "uri": "https://dev.azure.com/nkdagility/Azure-DevOps-Variable-Tools/_apis/build/status/CI",
-      "description": "Azure Pipelines Build for the project"
-    }
-  ],
   "icons": {
     "default": "images/extension-icon.png"
   },
@@ -49,11 +52,6 @@
     "color": "#1C3272",
     "theme": "dark"
   },
-  "screenshots": [
-    {
-      "path": "images/screenshot-01.png"
-    }
-  ],
   "content": {
     "details": {
       "path": "README.md"
@@ -64,31 +62,31 @@
   },
   "files": [
     {
-      "path": "variablerehydration-task"
+      "path": "tasks/CogeniusVariableSave"
     },
     {
-      "path": "variabledehydration-task"
+      "path": "tasks/CogeniusVariableLoad"
     }
   ],
   "contributions": [
     {
-      "id": "variablerehydration-task",
+      "id": "cogenius-variable-save-task",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "variablerehydration-task"
+        "name": "tasks/CogeniusVariableSave"
       }
     },
     {
-      "id": "variabledehydration-task",
+      "id": "cogenius-variable-load-task",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "variabledehydration-task"
+        "name": "tasks/CogeniusVariableLoad"
       }
     }
   ]

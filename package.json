@@ -1,0 +1,24 @@
+{
+  "name": "cogenius-variable-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cogenius Variable tools for Azure DevOps - save and load pipeline variables on Windows, Linux and macOS agents.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cogenius/azure-devops-variable-tools.git"
+  },
+  "scripts": {
+    "install:tasks": "npm ci --omit=dev --prefix tasks/CogeniusVariableSave/v1 && npm ci --omit=dev --prefix tasks/CogeniusVariableLoad/v1",
+    "build": "tsc -p tsconfig.json",
+    "test": "pwsh -NoProfile -File tests/run-tests.ps1",
+    "version:set": "node scripts/set-version.js",
+    "package": "tfx extension create --manifest-globs vss-extension.json --output-path dist",
+    "publish": "tfx extension publish --manifest-globs vss-extension.json --output-path dist"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "tfx-cli": "^0.24.2",
+    "typescript": "^5.9.0"
+  }
+}
