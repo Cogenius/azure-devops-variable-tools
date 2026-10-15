@@ -52,11 +52,6 @@
     "color": "#1C3272",
     "theme": "dark"
   },
-  "screenshots": [
-    {
-      "path": "images/screenshot-01.png"
-    }
-  ],
   "content": {
     "details": {
       "path": "README.md"
