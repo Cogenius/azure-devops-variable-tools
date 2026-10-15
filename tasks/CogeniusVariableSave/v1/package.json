@@ -1,0 +1,11 @@
+{
+  "name": "cogeniusvariablesave-task",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CogeniusVariableSave Azure Pipelines task",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^5.2.0"
+  }
+}

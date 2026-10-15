@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "db562323-67c0-4ab6-ac6f-d4d5a6f7feab",
+  "name": "CogeniusVariableSave",
+  "friendlyName": "Cogenius Variable Save",
+  "description": "Saves pipeline variables matching one or more prefixes to .json files so they can be loaded later (Windows, Linux and macOS).",
+  "helpMarkDown": "[More information](https://github.com/Cogenius/azure-devops-variable-tools#readme)",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "runsOn": [
+    "Agent"
+  ],
+  "author": "Cogenius",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "minimumAgentVersion": "3.232.1",
+  "inputs": [
+    {
+      "name": "prefixes",
+      "type": "string",
+      "label": "Prefixes",
+      "defaultValue": "GITVERSION,BUILD",
+      "required": true,
+      "helpMarkDown": "Comma delimited list of variable prefixes to save (matched case-insensitively against the agent environment, e.g. `BUILD` matches `BUILD_BUILDNUMBER`). One `meta-<prefix>.json` file is written per prefix."
+    },
+    {
+      "name": "outpath",
+      "type": "filePath",
+      "label": "Output path",
+      "defaultValue": "$(Build.ArtifactStagingDirectory)",
+      "required": true,
+      "helpMarkDown": "Folder in which the `meta-<prefix>.json` files are stored."
+    }
+  ],
+  "instanceNameFormat": "Save variables $(prefixes)",
+  "execution": {
+    "Node20_1": {
+      "target": "index.js",
+      "argumentFormat": ""
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "ad91e75f-455c-423b-84ae-69adf2ded920",
+  "name": "CogeniusVariableLoad",
+  "friendlyName": "Cogenius Variable Load",
+  "description": "Loads variables saved by the Cogenius Variable Save task and sets them as pipeline variables (Windows, Linux and macOS).",
+  "helpMarkDown": "[More information](https://github.com/Cogenius/azure-devops-variable-tools#readme)",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "runsOn": [
+    "Agent"
+  ],
+  "author": "Cogenius",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "minimumAgentVersion": "3.232.1",
+  "inputs": [
+    {
+      "name": "jsonfiles",
+      "type": "multiLine",
+      "label": "JSON files",
+      "defaultValue": "**/meta-*.json",
+      "required": true,
+      "helpMarkDown": "File matching pattern(s), one per line, of the JSON files to load. Relative patterns are resolved against `$(System.DefaultWorkingDirectory)`."
+    }
+  ],
+  "instanceNameFormat": "Load variables $(jsonfiles)",
+  "execution": {
+    "Node20_1": {
+      "target": "index.js",
+      "argumentFormat": ""
+    }
+  }
+}
